@@ -36,8 +36,10 @@ javascript:(function(){
 
     /* Trim off @domain suffix in case it matches with LOCAL_DOMAIN. This due to https://github.com/mastodon/mastodon/issues/21469 */
     if (user.endsWith(`@${LOCAL_DOMAIN}`)) {
-        user = user.substring(0, user.length - `@${LOCAL_DOMAIN}`.length);
+        path = '@' + user.substring(0, user.length - `@${LOCAL_DOMAIN}`.length);
+    } else {
+        path = `web/@${user}`;
     }
 
-    window.location.href = `https://${WEB_DOMAIN}/@${user}`;
+    window.location.href = `https://${WEB_DOMAIN}/${path}`;
 })();
