@@ -97,9 +97,9 @@ const generateLink = (domain) => {
     const previousLink = document.getElementById('bookmarklet');
     if (previousLink) { previousLink.parentNode.removeChild(previousLink); }
 
-    fetch('https://gist.githubusercontent.com/bramus/d8bce55dab1881cde18aa2169c66ac33/raw/1e286b65fdc21e535c627063477d6d7a00816695/bookmarklet.js').then(result => result.text().then(content => {
+    fetch('./bookmarklet.js').then(result => result.text().then(content => {
 
-    href = content.replace(/'front\-end\.social'/g, `'${domain}'`);
+    href = content.replace(/'example\.org'/g, `'${domain}'`);
       
     link = document.createElement('a');
     link.setAttribute('href', href);
