@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bookmarklet: Easy Follow across Mastodon Instances</title>
+        <style>
+body {
+  font-family: sans-serif;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+button {
+  padding: 1em 2em;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: darkGreen;
+  color: white;
+  border: 0;
+}
+button:active {
+  background: white;
+  color: darkGreen;
+}
+header, footer {
+  color: #888;
+  font-size: 0.8rem;
+}
+form {
+  background: #eee;
+  padding: 0.5em 2em;
+}
+input {
+  font-size: 1rem;
+  width: 20em;
+  height: 2em;
+  line-height: 2;
+}
+body {
+  margin: 0 auto;
+  max-width: 50rem;
+  padding: 0.5rem 2rem;
+}
+
+h1 {
+  font-size: 1.3rem;
+  color: #000;
+}
+
+#bookmarklet {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0.5rem 0.2rem 0.5rem 2rem;
+  color: darkGreen;
+}
+
+#dump-area:not(:empty)::after {
+  content: '(Drag this link to your bookmarks bar)';
+  font-size: 0.7rem;
+}
+        </style>
+    </head>
+    <body>
+        <header>
+          <h1>Bookmarklet: Easy Follow across Mastodon Instances</h1>
+          <p>Have you ever felt like the act of following someone who's not in your instance is a bit cumbersome when using Mastodon?</p>
+          <p>What if you could click a link in your bookmarks bar to take you to your own instance but seeing the profile of the person you want to follow?</p>
+          <p>Just type in the domain of your instance in the text input below and we'll generate a link that you can Drag to your bookmarks bar.</p>
+        </header>
+        <hr>
+        <main>
+          <p>tl;dr: put in your instance domain. drag link to bookmarks bar</p>
+          <form action="javascript:;">
+              <p><label for="domain">What's the address of your instance?</label>
+              <input type="text" name="domain" id="domain" placeholder="mastodon.example" required></p>
+              <p>
+              <button id="generate" type="submit">Generate bookmarklet!</button>
+              <span aria-live="polite" id="dump-area"></span>
+              </p>
+          </form>
+        </main>
+        <footer>
+          <p>Bookmarklet from the excellent gist:
+          <a href="https://gist.github.com/bramus/d8bce55dab1881cde18aa2169c66ac33">https://gist.github.com/bramus/d8bce55dab1881cde18aa2169c66ac33</a> by <a href="https://front-end.social/@bramus">@bramus@front-end.social</a>.</p>
+          <p>This tool made by <a href="https://andr3.net/@me">@me@andr3.net</a>. &mdash; <a rel="license" href="https://creativecommons.org/share-your-work/public-domain/cc0/">CC0</a><p>
+        </footer>
+        <script>
+const el = document.querySelector('form');
+
+const generateLink = (domain) => {
+    let href;
+    let link;
+    const previousLink = document.getElementById('bookmarklet');
+    if (previousLink) { previousLink.parentNode.removeChild(previousLink); }
+
+    fetch('https://gist.githubusercontent.com/bramus/d8bce55dab1881cde18aa2169c66ac33/raw/1e286b65fdc21e535c627063477d6d7a00816695/bookmarklet.js').then(result => result.text().then(content => {
+
+    href = content.replace(/'front\-end\.social'/g, `'${domain}'`);
+      
+    link = document.createElement('a');
+    link.setAttribute('href', href);
+    link.id = 'bookmarklet';
+    link.innerText = 'Follow'
+    document.getElementById('dump-area').appendChild(link);
+  }));
+};
+
+if (el && 'addEventListener' in el) {
+  el.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+
+    generateLink(document.querySelector('#domain').value);
+  })
+}
+    </script>
+    </body>
+</html>
