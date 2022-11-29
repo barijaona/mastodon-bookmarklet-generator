@@ -99,7 +99,7 @@ const generateLink = (domain) => {
 
     fetch('./bookmarklet.js').then(result => result.text().then(content => {
 
-    href = content.replace(/'example\.org'/g, `'${domain}'`);
+    href = content.replace(/'example\.org'/, `'${domain}'`);
       
     link = document.createElement('a');
     link.setAttribute('href', href);
