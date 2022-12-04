@@ -53,13 +53,20 @@ h1 {
 .dump-area a:link {
   font-size: 1.3rem;
   font-weight: bold;
-  margin: 0.5rem 0.2rem 0.5rem 2rem;
+  margin: 0.5rem 0.2rem 0.5rem 0rem;
   color: darkGreen;
 }
 
 .dump-area:not(:empty)::after {
   content: '(Drag this link to your bookmarks bar)';
   font-size: 0.7rem;
+  display:block;
+}
+
+.dump-area ::before {
+  content: attr(title) ': ';
+  font-weight: normal;
+  color: black;
 }
         </style>
     </head>
@@ -101,6 +108,7 @@ const generateLink = (domain) => {
     link1.setAttribute('href', href1);
     link1.id = 'bookmarklet1';
     link1.innerText = 'Follow';
+    link1.title = 'Use this to follow a Mastodon user';
     const previousLink1 = document.getElementById('bookmarklet1');
     if (previousLink1) { previousLink1.parentNode.removeChild(previousLink1); }
     document.getElementById('dump-area1').appendChild(link1);
