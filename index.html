@@ -50,6 +50,11 @@ h1 {
   color: #000;
 }
 
+h2 {
+  font-size: 1.1rem;
+  color: #333;
+}
+
 .dump-area a:link {
   font-size: 1.3rem;
   font-weight: bold;
@@ -72,14 +77,16 @@ h1 {
     </head>
     <body>
         <header>
-          <h1>Bookmarklet: Easy Follow across Mastodon Instances</h1>
-          <p>Have you ever felt like the act of following someone who's not in your instance is a bit cumbersome when using Mastodon?</p>
-          <p>What if you could click a link in your bookmarks bar to take you to your own instance but seeing the profile of the person you want to follow?</p>
-          <p>Just type in the domain of your instance in the text input below and we'll generate a link that you can Drag to your bookmarks bar.</p>
+          <h1>Mastodon Bookmarklet Generator</h1>
+          <h2>Follow, react and publish across your Mastodon instance</h2>
+          <p>Because of the decentralized structure of the Fediverse, a web browser is much more efficient than a dedicated Mastodon client to make interesting discoveries. Indeed, you will see much more content if you use your web browser to follow links and discover the entirety of conversations on the instances where authors are registered.</p>
+          <p>But you will quickly feel that reacting to a post or following someone who is not in your instance is a bit tedious.</p>
+          <p>What if you could click on a link in your bookmarks bar to take you back to your own instance, but seeing the profile of the person you want to follow?</p>
+          <p>Just type in the domain of your instance in the text input field below and we'll generate links that you can drag to your bookmark bar.</p>
         </header>
         <hr>
         <main>
-          <p>tl;dr: put in your instance domain. drag link to bookmarks bar.</p>
+          <p>tl;dr: put in your instance domain. Drag links to bookmarks bar.</p>
           <form action="javascript:;">
               <p><label for="domain">What's the address of your instance?</label>
               <input type="text" name="domain" id="domain" placeholder="mastodon.example" required></p>
@@ -88,9 +95,8 @@ h1 {
           </form>
         </main>
         <footer>
-          <p>Web tool initially made by <a href="https://toot.andr3.net/@me">André Luís</a>.</p>
-          <p>Bookmarklet taken from <a href="https://github.com/bramus/mastodon-profile-redirect">mastodon-profile-redirect</a> plugin, written by <a href="https://front-end.social/@bramus">Bramus Van Damme</a>.</p>
-          <p>Assembly by <a href="https://mastodon.mg/@barijaona">Barijaona Ramaholimihaso</a>.</p>
+          <p>Tool assembled by <a href="https://mastodon.mg/@barijaona">Barijaona Ramaholimihaso</a>.</p>
+          <p>Credits to <a href="https://toot.andr3.net/@me">André Luís</a>' Mastodon Follow Bookmarklet and <a href="https://front-end.social/@bramus">Bramus Van Damme</a>'s <a href="https://github.com/bramus/mastodon-profile-redirect">mastodon-profile-redirect plugin</a>.</p>
           <a rel="license" href="https://github.com/barijaona/mastodon-bookmarklet-generator/blob/main/LICENSE">MIT License</a><p>
         </footer>
         <script>
