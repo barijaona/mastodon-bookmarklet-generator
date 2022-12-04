@@ -50,14 +50,14 @@ h1 {
   color: #000;
 }
 
-#bookmarklet {
+.dump-area a:link {
   font-size: 1.3rem;
   font-weight: bold;
   margin: 0.5rem 0.2rem 0.5rem 2rem;
   color: darkGreen;
 }
 
-#dump-area:not(:empty)::after {
+.dump-area:not(:empty)::after {
   content: '(Drag this link to your bookmarks bar)';
   font-size: 0.7rem;
 }
@@ -72,14 +72,12 @@ h1 {
         </header>
         <hr>
         <main>
-          <p>tl;dr: put in your instance domain. drag link to bookmarks bar</p>
+          <p>tl;dr: put in your instance domain. drag link to bookmarks bar.</p>
           <form action="javascript:;">
               <p><label for="domain">What's the address of your instance?</label>
               <input type="text" name="domain" id="domain" placeholder="mastodon.example" required></p>
-              <p>
-              <button id="generate" type="submit">Generate bookmarklet!</button>
-              <span aria-live="polite" id="dump-area"></span>
-              </p>
+              <button id="generate" type="submit">Generate bookmarklets!</button>
+              <p><span aria-live="polite" class="dump-area" id="dump-area1"></span></p>
           </form>
         </main>
         <footer>
@@ -92,20 +90,20 @@ h1 {
 const el = document.querySelector('form');
 
 const generateLink = (domain) => {
-    let href;
-    let link;
-    const previousLink = document.getElementById('bookmarklet');
-    if (previousLink) { previousLink.parentNode.removeChild(previousLink); }
+    let href1;
+    let link1;
 
     fetch('./bookmarklet.js').then(result => result.text().then(content => {
 
-    href = content.replace(/'example\.org'/, `'${domain}'`);
+    href1 = content.replace(/'example\.org'/, `'${domain}'`);
       
-    link = document.createElement('a');
-    link.setAttribute('href', href);
-    link.id = 'bookmarklet';
-    link.innerText = 'Follow'
-    document.getElementById('dump-area').appendChild(link);
+    link1 = document.createElement('a');
+    link1.setAttribute('href', href1);
+    link1.id = 'bookmarklet1';
+    link1.innerText = 'Follow';
+    const previousLink1 = document.getElementById('bookmarklet1');
+    if (previousLink1) { previousLink1.parentNode.removeChild(previousLink1); }
+    document.getElementById('dump-area1').appendChild(link1);
   }));
 };
 
