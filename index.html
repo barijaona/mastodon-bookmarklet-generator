@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title>Bookmarklet: Easy Follow across Mastodon Instances</title>
+        <title>Bookmarklet Generator : follow, react and publish across your Mastodon instance</title>
         <style>
 body {
   font-family: sans-serif;
@@ -84,7 +84,7 @@ h1 {
           <p>Web tool initially made by <a href="https://toot.andr3.net/@me">André Luís</a>.</p>
           <p>Bookmarklet taken from <a href="https://github.com/bramus/mastodon-profile-redirect">mastodon-profile-redirect</a> plugin, written by <a href="https://front-end.social/@bramus">Bramus Van Damme</a>.</p>
           <p>Assembly by <a href="https://mastodon.mg/@barijaona">Barijaona Ramaholimihaso</a>.</p>
-          <a rel="license" href="https://github.com/barijaona/mastodon-follow-bookmarklet/blob/main/LICENSE">MIT License</a><p>
+          <a rel="license" href="https://github.com/barijaona/mastodon-bookmarklet-generator/blob/main/LICENSE">MIT License</a><p>
         </footer>
         <script>
 const el = document.querySelector('form');
@@ -93,7 +93,7 @@ const generateLink = (domain) => {
     let href1;
     let link1;
 
-    fetch('./bookmarklet.js').then(result => result.text().then(content => {
+    fetch('./follow_bookmarklet.js').then(result => result.text().then(content => {
 
     href1 = content.replace(/'example\.org'/, `'${domain}'`);
       
