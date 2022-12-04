@@ -92,7 +92,8 @@ h2 {
               <input type="text" name="domain" id="domain" placeholder="mastodon.example" required></p>
               <button id="generate" type="submit">Generate bookmarklets!</button>
               <p><span aria-live="polite" class="dump-area" id="dump-area1"></span></p>
-          </form>
+              <p><span aria-live="polite" class="dump-area" id="dump-area2"></span></p>
+           </form>
         </main>
         <footer>
           <p>Tool assembled by <a href="https://mastodon.mg/@barijaona">Barijaona Ramaholimihaso</a>.</p>
@@ -119,6 +120,18 @@ const generateLink = (domain) => {
     if (previousLink1) { previousLink1.parentNode.removeChild(previousLink1); }
     document.getElementById('dump-area1').appendChild(link1);
   }));
+
+    let href2;
+    let link2;
+    href2 = `javascript:window.location.href = 'https://${domain}/authorize_interaction?uri='+encodeURIComponent(window.location.href)`;
+    link2 = document.createElement('a');
+    link2.setAttribute('href', href2);
+    link2.id = 'bookmarklet2';
+    link2.innerText = 'React';
+    link2.title = 'Use this to bring a Mastodon element to your own instance';
+    const previousLink2 = document.getElementById('bookmarklet2');
+    if (previousLink2) { previousLink2.parentNode.removeChild(previousLink2); }
+    document.getElementById('dump-area2').appendChild(link2);
 };
 
 if (el && 'addEventListener' in el) {
