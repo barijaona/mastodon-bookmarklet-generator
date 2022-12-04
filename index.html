@@ -93,6 +93,7 @@ h2 {
               <button id="generate" type="submit">Generate bookmarklets!</button>
               <p><span aria-live="polite" class="dump-area" id="dump-area1"></span></p>
               <p><span aria-live="polite" class="dump-area" id="dump-area2"></span></p>
+              <p><span aria-live="polite" class="dump-area" id="dump-area3"></span></p>
            </form>
         </main>
         <footer>
@@ -132,6 +133,18 @@ const generateLink = (domain) => {
     const previousLink2 = document.getElementById('bookmarklet2');
     if (previousLink2) { previousLink2.parentNode.removeChild(previousLink2); }
     document.getElementById('dump-area2').appendChild(link2);
+
+    let href3;
+    let link3;
+    href3 = `javascript:window.location.href = 'https://${domain}/share?text='+encodeURIComponent(document.title+'\\n'+window.location.href)`;
+    link3 = document.createElement('a');
+    link3.setAttribute('href', href3);
+    link3.id = 'bookmarklet3';
+    link3.innerText = 'Publish';
+    link3.title = 'Use this to start a Mastodon post linking to the current webpage';
+    const previousLink3 = document.getElementById('bookmarklet3');
+    if (previousLink3) { previousLink3.parentNode.removeChild(previousLink3); }
+    document.getElementById('dump-area3').appendChild(link3);
 };
 
 if (el && 'addEventListener' in el) {
