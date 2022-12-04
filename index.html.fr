@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title>Bookmarklet Generator : follow, react and publish across your Mastodon instance</title>
-        <link rel="alternate" hreflang="fr" href="./index.html.fr">
+        <title>Générateur de Bookmarklets : suivez, réagissez et publiez via votre instance Mastodon</title>
+        <link rel="alternate" hreflang="en" href="./index.html">
         <style>
 body {
   font-family: sans-serif;
@@ -64,7 +64,7 @@ h2 {
 }
 
 .dump-area:not(:empty)::after {
-  content: '(Drag this link to your bookmarks bar)';
+  content: '(Faites glissez ce lien vers votre barre de signets)';
   font-size: 0.7rem;
   display:block;
 }
@@ -78,29 +78,29 @@ h2 {
     </head>
     <body>
         <header>
-          <h1>Mastodon Bookmarklet Generator</h1>
-          <h2>Follow, react and publish across your Mastodon instance</h2>
-          <p>Because of the decentralized structure of the Fediverse, a web browser is much more efficient than a dedicated Mastodon client to make interesting discoveries. Indeed, you will see much more content if you use your web browser to follow links and discover the entirety of conversations on the instances where authors are registered.</p>
-          <p>But you will quickly feel that reacting to a post or following someone who is not in your instance is a bit tedious.</p>
-          <p>What if you could click on a link in your bookmarks bar to take you back to your own instance, but seeing the profile of the person you want to follow?</p>
-          <p>Just type in the domain of your instance in the text input field below and we'll generate links that you can drag to your bookmark bar.</p>
+          <h1>Générateur de Bookmarklets Mastodon</h1>
+          <h2>Suivez, réagissez et publiez via votre instance Mastodon</h2>
+          <p>En raison de la structure décentralisée du Fediverse, un navigateur web est beaucoup plus efficace qu'un client Mastodon dédié pour faire des découvertes intéressantes. En effet, vous verrez davantage de contenu si vous utilisez votre navigateur web pour suivre les liens affichés et découvrir l'intégralité des conversations sur les instances où les auteurs sont inscrits.</p>
+          <p>Mais vous découvrirez rapidement que réagir à un message ou suivre quelqu'un qui n'est pas dans votre instance est un peu fastidieux.</p>
+          <p>Et si vous pouviez cliquer sur un lien dans votre barre de signets pour vous ramener à votre propre instance, tout en voyant le profil de la personne que vous voulez suivre ?</p>
+          <p>Vous n'avez qu'à entrer le nom de domaine de votre instance dans le champ de saisie ci-dessous et nous générerons des liens que vous pourrez faire glisser vers votre barre de signets.</p>
         </header>
         <hr>
         <main>
-          <p>tl;dr: put in your instance domain. Drag links to bookmarks bar.</p>
+          <p>En bref : saisissez le domaine de votre instance. Faites glisser les liens vers la barre de signets.</p>
           <form action="javascript:;">
-              <p><label for="domain">What's the address of your instance?</label>
+              <p><label for="domain">Quel est l'addresse de votre instance ?</label>
               <input type="text" name="domain" id="domain" placeholder="mastodon.example" required></p>
-              <button id="generate" type="submit">Generate bookmarklets!</button>
+              <button id="generate" type="submit">Générez les signets !</button>
               <p><span aria-live="polite" class="dump-area" id="dump-area1"></span></p>
               <p><span aria-live="polite" class="dump-area" id="dump-area2"></span></p>
               <p><span aria-live="polite" class="dump-area" id="dump-area3"></span></p>
            </form>
         </main>
         <footer>
-          <p>Tool assembled by <a href="https://mastodon.mg/@barijaona">Barijaona Ramaholimihaso</a>.</p>
-          <p>Credits to <a href="https://toot.andr3.net/@me">André Luís</a>' Mastodon Follow Bookmarklet and <a href="https://front-end.social/@bramus">Bramus Van Damme</a>'s <a href="https://github.com/bramus/mastodon-profile-redirect">mastodon-profile-redirect plugin</a>.</p>
-          <a rel="license" href="https://github.com/barijaona/mastodon-bookmarklet-generator/blob/main/LICENSE">MIT License</a><p>
+          <p>Outil assemblé par <a href="https://mastodon.mg/@barijaona">Barijaona Ramaholimihaso</a>.</p>
+          <p>Crédits au Mastodon Follow Bookmarklet d'<a href="https://toot.andr3.net/@me">André Luís</a> et au plugin <a href="https://github.com/bramus/mastodon-profile-redirect">mastodon-profile-redirect</a> de <a href="https://front-end.social/@bramus">Bramus Van Damme</a>.</p>
+          <a rel="license" href="https://github.com/barijaona/mastodon-bookmarklet-generator/blob/main/LICENSE">Licence MIT</a><p>
         </footer>
         <script>
 const el = document.querySelector('form');
@@ -116,8 +116,8 @@ const generateLink = (domain) => {
     link1 = document.createElement('a');
     link1.setAttribute('href', href1);
     link1.id = 'bookmarklet1';
-    link1.innerText = 'Follow';
-    link1.title = 'Use this to follow a Mastodon user';
+    link1.innerText = 'Suivre';
+    link1.title = 'Pour suivre un utilisateur Mastodon ';
     const previousLink1 = document.getElementById('bookmarklet1');
     if (previousLink1) { previousLink1.parentNode.removeChild(previousLink1); }
     document.getElementById('dump-area1').appendChild(link1);
@@ -129,8 +129,8 @@ const generateLink = (domain) => {
     link2 = document.createElement('a');
     link2.setAttribute('href', href2);
     link2.id = 'bookmarklet2';
-    link2.innerText = 'React';
-    link2.title = 'Use this to bring a Mastodon element to your own instance';
+    link2.innerText = 'Réagir';
+    link2.title = 'Pour amener un élément Mastodon (message, utilisateur…) vers votre propre instance ';
     const previousLink2 = document.getElementById('bookmarklet2');
     if (previousLink2) { previousLink2.parentNode.removeChild(previousLink2); }
     document.getElementById('dump-area2').appendChild(link2);
@@ -141,8 +141,8 @@ const generateLink = (domain) => {
     link3 = document.createElement('a');
     link3.setAttribute('href', href3);
     link3.id = 'bookmarklet3';
-    link3.innerText = 'Publish';
-    link3.title = 'Use this to start a Mastodon post linking to the current webpage';
+    link3.innerText = 'Publier';
+    link3.title = 'Pour initier un message Mastodon citant la page web actuellement affichée ';
     const previousLink3 = document.getElementById('bookmarklet3');
     if (previousLink3) { previousLink3.parentNode.removeChild(previousLink3); }
     document.getElementById('dump-area3').appendChild(link3);
