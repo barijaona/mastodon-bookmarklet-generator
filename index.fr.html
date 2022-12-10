@@ -116,7 +116,7 @@ const generateLink = (domain) => {
     link1 = document.createElement('a');
     link1.setAttribute('href', href1);
     link1.id = 'bookmarklet1';
-    link1.innerText = 'Suivre';
+    link1.innerText = `Suivre via ${domain}`;
     link1.title = 'Pour suivre un utilisateur Mastodon ';
     const previousLink1 = document.getElementById('bookmarklet1');
     if (previousLink1) { previousLink1.parentNode.removeChild(previousLink1); }
@@ -129,7 +129,7 @@ const generateLink = (domain) => {
     link2 = document.createElement('a');
     link2.setAttribute('href', href2);
     link2.id = 'bookmarklet2';
-    link2.innerText = 'Réagir';
+    link2.innerText = `Réagir via ${domain}`;
     link2.title = 'Pour amener un élément Mastodon (message, utilisateur…) vers votre propre instance ';
     const previousLink2 = document.getElementById('bookmarklet2');
     if (previousLink2) { previousLink2.parentNode.removeChild(previousLink2); }
@@ -141,7 +141,7 @@ const generateLink = (domain) => {
     link3 = document.createElement('a');
     link3.setAttribute('href', href3);
     link3.id = 'bookmarklet3';
-    link3.innerText = 'Publier';
+    link3.innerText = `Publier via ${domain}`;
     link3.title = 'Pour initier un message Mastodon citant la page web actuellement affichée ';
     const previousLink3 = document.getElementById('bookmarklet3');
     if (previousLink3) { previousLink3.parentNode.removeChild(previousLink3); }

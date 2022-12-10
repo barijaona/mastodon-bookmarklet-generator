@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Bookmarklet Generator : follow, react and publish across your Mastodon instance</title>
-        <link rel="alternate" hreflang="fr" href="./index.fr.html">
+        <link rel="alternate" hreflang="fr" href="./index.html.fr">
         <style>
 body {
   font-family: sans-serif;
@@ -116,7 +116,7 @@ const generateLink = (domain) => {
     link1 = document.createElement('a');
     link1.setAttribute('href', href1);
     link1.id = 'bookmarklet1';
-    link1.innerText = 'Follow';
+    link1.innerText = `Follow via ${domain}`;
     link1.title = 'Use this to follow a Mastodon user';
     const previousLink1 = document.getElementById('bookmarklet1');
     if (previousLink1) { previousLink1.parentNode.removeChild(previousLink1); }
@@ -129,7 +129,7 @@ const generateLink = (domain) => {
     link2 = document.createElement('a');
     link2.setAttribute('href', href2);
     link2.id = 'bookmarklet2';
-    link2.innerText = 'React';
+    link2.innerText = `React via ${domain}`;
     link2.title = 'Use this to bring a Mastodon element to your own instance';
     const previousLink2 = document.getElementById('bookmarklet2');
     if (previousLink2) { previousLink2.parentNode.removeChild(previousLink2); }
@@ -141,7 +141,7 @@ const generateLink = (domain) => {
     link3 = document.createElement('a');
     link3.setAttribute('href', href3);
     link3.id = 'bookmarklet3';
-    link3.innerText = 'Publish';
+    link3.innerText = `Publish via ${domain}`;
     link3.title = 'Use this to start a Mastodon post linking to the current webpage';
     const previousLink3 = document.getElementById('bookmarklet3');
     if (previousLink3) { previousLink3.parentNode.removeChild(previousLink3); }
