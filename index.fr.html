@@ -139,12 +139,12 @@ const generateLink = (domain) => {
 
     let href3;
     let link3;
-    href3 = `javascript:window.location.href = 'https://${domain}/share?text='+encodeURIComponent(document.title+'\\n'+window.location.href)`;
+    href3 = `javascript:window.location.href = 'https://${domain}/share?text='+encodeURIComponent(document.title+(window.getSelection().toString() ? '\\n« '+window.getSelection().toString()+' »':'')+'\\n'+window.location.href)`;
     link3 = document.createElement('a');
     link3.setAttribute('href', href3);
     link3.id = 'bookmarklet3';
     link3.innerText = `Publier via ${domain}`;
-    link3.title = 'Pour initier un message Mastodon citant la page web actuellement affichée ';
+    link3.title = 'Pour initier un message Mastodon citant la page web actuellement affichée (et son texte sélectionné) ';
     const previousLink3 = document.getElementById('bookmarklet3');
     if (previousLink3) { previousLink3.parentNode.removeChild(previousLink3); }
     document.getElementById('dump-area3').appendChild(link3);
