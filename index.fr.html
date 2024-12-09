@@ -139,7 +139,7 @@ const generateLink = (domain) => {
 
     let href3;
     let link3;
-    href3 = `javascript:window.location.href = 'https://${domain}/share?text='+encodeURIComponent(document.title+(window.getSelection().toString() ? '\\n« '+window.getSelection().toString()+' »':'')+'\\n'+window.location.href)`;
+    href3 = `javascript:window.location.href = 'https://${domain}/share?text='+encodeURIComponent(document.title+(window.getSelection().toString() ? '\\n"'+window.getSelection().toString()+'"':'')+'\\n'+window.location.href)`;
     link3 = document.createElement('a');
     link3.setAttribute('href', href3);
     link3.id = 'bookmarklet3';
